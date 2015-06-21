@@ -48,3 +48,12 @@ command=/bin/rspamd -f -u _rspamd -g _rspamd
 command=/bin/rmilter-wrapper.sh
 EOF
 }
+
+if [ ! -d /data/etc ] ; then
+    move_dirs
+    link_dirs
+    configure_supervisor
+else
+    link_dirs
+    supervisord
+fi
