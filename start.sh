@@ -2,12 +2,8 @@
 
 dir=(
     /etc/rspamd
-    /etc/rmilter.conf
-    /etc/supervisord.conf
     /var/lib/rspamd
-    /var/lib/rmilter
     /var/log/rspamd
-    /var/log/rmilter 
 )
 
 move_dirs()
@@ -31,29 +27,17 @@ link_dirs()
  
     echo "info:  finished linking default lib and log folders to /data volume"
 }
-
-configure_supervisor()
+run()
 {
-    echo "info:  start configuring Supervisor"
-
-
-    cat > /etc/supervisord.conf << EOF
-[supervisord]
-nodaemon=true
-
-[program:rspamd]
-command=/bin/rspamd -f -u _rspamd -g _rspamd 
-
-[program:rmilter]
-command=/bin/rmilter-wrapper.sh
-EOF
+    #Start command
+    /bin/rspamd -f -u _rspamd -g _rspamd 
 }
 
 if [ ! -d /data/etc ] ; then
     move_dirs
     link_dirs
-    configure_supervisor
+    run
 else
     link_dirs
-    supervisord
+    run
 fi
