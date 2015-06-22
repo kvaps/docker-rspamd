@@ -44,8 +44,8 @@ RUN cp /usr/src/rmilter/rmilter.conf.sample /etc/rmilter.conf
 ADD rmilter-wrapper.sh /bin/rmilter-wrapper.sh
 RUN chmod +x /bin/rmilter-wrapper.sh
 
-ADD setup.sh /bin/setup.sh
-ENTRYPOINT ["/bin/setup.sh"]
+ADD start.sh /bin/start.sh
+ENTRYPOINT ["/bin/start.sh"]
 
 # Attach data volume
 VOLUME ["/data"]
