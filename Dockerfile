@@ -8,7 +8,7 @@ ENV LANG en_US.UTF-8
 
 RUN yum -y install epel-release
 
-RUN yum -y install git gcc cmake libevent-devel glib2-devel gmime-devel lua lua-devel openssl-devel pcre-devel sqlite-devel hiredis-devel logrotate
+RUN yum -y install git gcc cmake libevent-devel glib2-devel gmime-devel lua lua-devel pcre-devel sqlite-devel hiredis-devel logrotate
 
 #Install Rspamd
 RUN git clone --recursive https://github.com/vstakhov/rspamd.git /usr/src/rspamd
