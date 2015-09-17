@@ -9,6 +9,7 @@ docker run \
     --name rspamd \
     -h rspamd \
     -v /opt/rspamd:/data:rw \
+    --env TZ=Europe/Moscow \
     -p 11333:11333 \
     -p 11334:11334 \
     -d \
@@ -28,7 +29,7 @@ Requires=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker run --name rspamd -h rspamd -v /opt/rspamd:/data -p 11334:11334 kvaps/rspamd
+ExecStart=/usr/bin/docker run --name rspamd -h rspamd -v /opt/rspamd:/data --env TZ=Europe/Moscow -p 11334:11334 kvaps/rspamd
 ExecStop=/usr/bin/docker stop -t 5 rspamd ; /usr/bin/docker rm -f rspamd
 
 [Install]
