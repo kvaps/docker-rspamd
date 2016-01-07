@@ -1,12 +1,5 @@
 #!/bin/bash
 
-set_timezone()
-{
-    if [ -f /usr/share/zoneinfo/$TZ ]; then 
-        rm -f /etc/localtime && ln -s /usr/share/zoneinfo/$TZ /etc/localtime
-    fi
-}
-
 dir=(
     /etc/rspamd
     /var/lib/rspamd
@@ -39,8 +32,6 @@ run()
     #Start command
     rspamd -f -u _rspamd -g _rspamd 
 }
-
-set_timezone
 
 if [ ! -d /data/etc ] ; then
     move_dirs
