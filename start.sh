@@ -37,7 +37,7 @@ link_dirs()
 run()
 {
     #Start command
-    /bin/rspamd -f -u _rspamd -g _rspamd 
+    rspamd -f -u _rspamd -g _rspamd 
 }
 
 set_timezone
